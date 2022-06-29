@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+   <style>
+
+    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+    /*   * ==전체선택  */
+    * {
+        font-family: Nanum Gothic; 
+    }
+
+    #child_wear{
+        width: 700px;
+        height:400px;
+        border-style: solid;
+        border-color: #c9ddf8 ;
+        border-width: 2px;
+        
+    }
+
+    #product_pic{
+        float:left;
+        width: 350px;
+        height:100%;
+        color: #fff;
+        border-width: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #product_detail{
+        float: left;
+        width:350px;
+        height:400px;
+        background-color:  #c9ddf8;
+    }
+    #product_tbl1{
+        margin:10px auto;
+        font-size: 10pt;
+        line-height: 27pt;
+        font-family: Nanum Gothic;
+        color: #333;
+        width:320px;
+        border-style:double;
+        border-width:4px;
+        border-color:#fff;
+        padding:10px;
+        background-color: #c3dcf8;
+    }
+    .product_title{
+        font-weight: bold;
+        width:70px;
+    }
+    .product_spec_price {
+        color:red;
+        font-size: 12pt;
+    }
+
+   </style>
+</head>
+<body>
+       <!-- 상품 전체 section 시작 -->
+       <div id="child_wear">
+
+        <!-- 상품 이미지 -->
+        <div id="product_pic">
+            <img src="small_suite.jpg">
+        </div>
+
+        <!-- 상품 설명 시작 -->
+        <div id="product_detail">
+            <table id="product_tbl1">
+                <tr>
+                    <td class="product_title">상품명</td>
+                    <td>아동복 여아 체크무늬 셔츠 원피스</td>
+                </tr>
+                <tr>
+                    <td class="product_title">색상</td>
+                    <td>레드 블랙 체크</td>
+                </tr>
+                <tr>
+                    <td class="product_title" colspan="2">
+                        상품설명
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        아이 피부를 보호하는 매끈한 촉감의 쾌적면<br>
+                        천연 소재 사용<br>
+                        COTTON USA 인증 제품<br>
+                        <b>신장</b> : 110~140cm<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="product_title">판매정가</td>
+                    <td><s>55,000(원)</s></td>
+                </tr>
+                <tr>
+                    <td class="product_title">특별할인가</td>
+                    <td class="product_spec_price">46,800(원)</td>
+                </tr>
+            </table>
+        </div>
+        <!-- 상품 설명 끝 -->
+
+    </div>
+    <!-- 상품 전체 section 끝 -->
+    
+</body>
+</html>
