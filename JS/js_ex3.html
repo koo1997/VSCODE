@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+
+            var arr = [ 1,2,3,4,5 ];
+            // var arr[] = [ 1,2,3,4,5 ]; // (X)
+
+            console.log("첫 요소 : " + arr[0]);
+            console.log("배열의 길이 : " + arr.length);
+            console.log("끝 요소 : " + arr[arr.length-1]);
+            console.log("끝 요소(X) : " + arr[arr.length]); // undefined
+
+            console.log("자료형 : " + typeof arr); 
+            // object : 배열도 객체로 간주
+            
+        } //
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // str = 'abcd';
+        // alert("str : " + str)
+
+        function func1() {
+            console.log("함수");
+        }
+
+        window.onload = function() {
+
+            // var div1 = document.getElementById("layer1");
+            var div1 = document.querySelector("#layer1");
+            // div1.innerHTML = "<b>Java<br>Python</b>";
+            // div1.innerText = "<b>Java<br>Python</b>";
+            div1.textContent = "<b>Java8<br>Python4</b>";
+
+            // document.getElementById("layer1").innerHTML 
+            //    = "<b>Java8<br>Python4</b>";
+
+            // var var1; // undefined (정의되지 않음)
+            // var var1 = 1;
+            var var1 = null; // typeof => object
+            console.log("var1 : " + var1); // undefined (자료형)
+            console.log("자료형 : " + typeof var1); // number
+
+            console.log("자료형 : " + typeof func1); // function
+        }
+    </script>
+</head>
+<body>
+    <div id="layer1">abcd</div>
+</body>
+</html>
