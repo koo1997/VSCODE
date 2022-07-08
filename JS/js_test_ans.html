@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>js test</title>
+<script>
+/*
+  문) 아래는 "창열기"을 눌렀을 때 링크 버튼이 있는 레이어 팝업창이 등장하고
+  "창닫기"를 눌렀을 때 레이어 팝업 및 링크 버튼이 사라지는 Javascript 함수를 작성하는 문제입니다.
+  주어진 조건과 같이 코드를 완성하십시오. 
+ 
+  참고) 물론 레이어의 CSS 속성 중 visibility 속성을 이용하여 구현할 수도 있지만 복습을 위한 과제이므로 아래의 단계대로 진행하시면 되겠습니다.
+ */
+window.onload = function() {
+	
+	/*
+		문1) btn1, btn2 이라는 아이디를 가진 버튼을 인식할 수 있는 변수 btn1, btn2을 작성하십시오.
+		hint) getElementById, querySelector, querySelectorAll 중에서 택일 사용 가능합니다.
+	*/
+	// var btn1 = document.getElementById("btn1");
+	// var btn1 = document.querySelector("#btn1");
+	var btn1 = document.querySelectorAll("#btn1")[0];
+	var btn2 = document.getElementById("btn2");
+	
+	/* btn1 이라는 아이디를 가진 객체를 눌렀을 때 작용하는 이벤트 핸들러(메서드)
+	
+	   액션) 아래에 주어진 layer1 이라는 아이디의 레이어(div)의 배경색을 "cyan"으로
+	   너비, 높이를 각각 200px로 절대 좌표를 (100, 100)로 변경하도록 조치합니다.   
+	   또한, 클릭하였을 때 자바 과정 학습 사이트(http://cafe.naver.com/djjava24)
+	   로 진입할 수 있는 "자바 과정"라는 링크 글자 버튼을 생성합니다. 
+	       
+	   hint) 객체에 css를 부여할 경우는 style 속성을 사용합니다.
+	   ex) 객체변수의 글꼴색 => 객체변수.style.color = "#000";
+	   주의) 좌표 성분은 반드시 절대좌표 등의 좌표에 대한 체계 속성을 설정해야 실제적으로 적용이 됩니다. 
+	 */
+	btn1.onclick = function() {
+		
+		// 레이어 객체 변수(layer1) 할당(생성)	    	  
+		// var layer1 = document.getElementById("layer1");
+		var layer1 = document.querySelector("#layer1");
+				
+		// css 속성 적용) 좌표 체계, 좌표(x/y), 크기(너비/높이), 배경색
+		// 주의) 0을 제외하고는 항상 단위 기입할 것 !
+		layer1.style.backgroundColor = "cyan";
+		layer1.style.position = "absolute";
+		layer1.style.left = "100px";
+		layer1.style.top = "100px";
+		layer1.style.width = "300px";
+		layer1.style.height = "300px";
+		
+		// "자바 과정" 글자 링크 버튼 작성
+		// <a> 태크 추가		
+		// aTag 라는 변수명으로 "a" 태그를 생성합니다.
+		var aTag = document.createElement('a');
+		
+		// href 속성에 링크 연결 사이트(http://cafe.naver.com/djjava24) 할당
+		// aTag.href= "http://cafe.naver.com/djjava24";
+		// aTag.target = "_self";
+		aTag.setAttribute("href", "http://cafe.naver.com/djjava24");
+		aTag.setAttribute("target", "_self");
+		
+		// 링크 버튼의 라벨("자바 과정")을 할당합니다.
+		// Hint) innerText, textContent, innerHTML, createTextNode/appendChild 등을 
+		// 선택적으로 활용할 수 있음.
+		// var textNode = document.createTextNode("링크");		
+		// aTag.appendChild(textNode);
+		aTag.innerHTML = "<b>자바 과정</b>";		
+		// aTag.innerText = "자바 과정";
+		// aTag.textContent = "자바 과정";
+		
+		console.log("layer1의 내부의 a 태그의 개수 : " + document.querySelectorAll("#layer1 a[href]").length);
+
+		// 레이어(layer1)에 aTag를 추가합니다.
+		if (document.querySelectorAll("#layer1 a[href]").length == 0) {
+			layer1.appendChild(aTag);
+		}
+	}
+	
+    /*
+       btn2 이라는 아이디를 가진 객체를 눌렀을 때 작용하는 이벤트 핸들러 메서드
+               작용) btn2를 눌렀을 때 레이어가 원래의 상태로 복원되도록 조치합니다.
+       Hint) 복원은 원래의 초기값(가령 배경 흰색 등)으로 재할당하는 것을 의미할 수 있습니다.
+	 */
+	btn2.onclick = function() {
+		
+    	// layer1 이라는 변수명으로 아이디가 layer1인 레이어 변수를 할당합니다.
+		var layer1 = document.getElementById("layer1");
+
+    	// 태그명으로 할당할 경우는 동일한 태그가 다수 출연할 수 있으므로 
+    	// 아래와 같이 배열을 사용해야 됩니다.
+		var aTag = document.getElementsByTagName('a')[0];
+		
+    	// 만약 링크(a) 태그가 존재하지 않는 경우 클릭하였을 때의 버그를 방지하기 위해
+    	// 존재 유무를 점검하여 링크(a) 태그를 제거합니다.
+		if (aTag != undefined) {
+			layer1.removeChild(aTag);
+		} 
+		
+    	// CSS 속성 적용) 위에서 작성된 layer1 변수를 활용하여 
+    	// 배경색을 흰색, 크기(너비/높이)를 각각 0 으로 할당합니다.
+		layer1.style.backgroundColor = "#fff";
+		layer1.style.width = "0";
+		layer1.style.height = "0";
+		
+		// 만약 좌표 체계를 원래대로 하려면 static 체계(좌표 체계 기본값)로 변경합니다.
+		// 그러나 굳이 여기에서는 좌표 체계 및 원점 설정은 실질적으로 의미가 없으므로 
+		// 반드시 재설정할 필요가 없습니다.
+		layer1.style.position = "static";
+	} //
+	
+}	
+</script>
+</head>
+<body>
+
+	<button id="btn1">창열기</button><br>
+	<button id="btn2">창닫기</button><br>
+	
+	<div id="layer1"></div>
+	
+</body>
+</html>
