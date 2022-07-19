@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="javateam">
+  <meta name="Author" content="teacher">
+  <meta name="Keywords" content="js form">
+  <meta name="Description" content="select control">
+  <title>select box 제어</title>
+  <script>
+    function selectFruit(fruit) {
+        
+        // 현재 선택된 순번(index)
+        console.log("선택상자에서 선택된 index : " 
+          + document.all["fruit"].options.selectedIndex);
+        
+        // 현재 선택된 값(text) 
+        var idx = document.getElementById("fruit").options.selectedIndex;
+        console.log(document.getElementById("fruit")[idx].text);
+        
+        // 항목(option)의 개수
+        //  var len = document.all["fruit"].length; 
+        // var len = document.all["fruit"].options.length; // 동일한 표현
+        //  alert(len);
+        
+        // 인자값 반영하여 재선택(re-select)
+       // 항목의 값이나 순번(index)를 통해서 값을 재설정함.
+        // ex) "포도" -> "포도" 항목 선택
+        
+        // var len = document.all["fruit"].length; 
+        // var len = document.all["fruit"].options.length;
+        // alert(len);
+        
+        var selectedIdx = 0; // 선택된 항목의 index
+        
+        // 항목에 해당하는 순번(index)값 검색
+        for (i=0; i<len; i++) {
+            
+            if (document.all["fruit"][i].text == fruit)
+                selectedIdx = i;
+        } // for
+        
+        // 선택항목 재설정(re-select)
+        document.all["fruit"].selectedIndex = selectedIdx;
+        
+        console.log("선택된 항목 index : " + selectedIdx + "\n"+
+              "선택된 항목 : " + fruit);
+    }
+
+	window.onload = function() {
+			selectFruit('포도');
+	}	
+  </script>
+</head>
+<body> 
+ 
+ <select id="fruit" name="fruit" onChange="selectFruit('포도')">
+    <option value="1">사과</option>
+    <option value="2">배</option>
+    <option value="3">감귤</option>
+    <option value="4">포도</option>
+    <option value="5">수박</option>
+    <option value="6">자두</option>
+    <option value="7">복숭아</option>
+  </select>
+  
+</body>
+</html>

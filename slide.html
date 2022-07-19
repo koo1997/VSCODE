@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+	
+            // 패널 펼침/접기 상태 변수 설정 (변수명 : panel_status)
+            // 상태 값 : 접기(folded), 펼침(spread) (문자열)
+            // 초기상태 : 접힌 상태(folded) (문자열)
+            var panel_status = "folded";
+            
+            // 패널 펼치기 버튼 (변수명 : panel_spreading_btn)	
+            var panel_spreading_btn = document.getElementById("panel_spreading_btn");
+            
+            // 패널 (panel)
+            var panel = document.getElementById("panel");
+            
+            // 패널(레이어) 크기/배경색  CSS 속성 설정
+            // 길이 : 0
+            // 높이 : 300px
+            // 배경색 : cyan
+            panel.style.width = "0";
+            panel.style.height = "300px";
+            panel.style.backgroundColor = "cyan";
+            
+            // 패널 넘침 방지 속성(overflow) 설정(hidden) 
+            // : 레이어 내용이 레이어 크기보다 클 경우 대처 속성
+            // 미설정시 접기 버튼이 의도하지 않게 출력됨.	
+            panel.style.overflow = "hidden"; 
+            
+            // 패널 트랜지션(모양 변형) 초기 속성 설정
+            // 변경할 속성 : 너비(width)
+            // 지연시간(delay) : 0.1초
+            // 지속시간(duration) : 0.5초
+            panel.style.transitionProperty = "width";
+            panel.style.transitionDelay = ".1s";
+            panel.style.transitionDuration = ".5s";
+            
+            // 패널 접기 버튼 (변수명 : panel_folding_btn)
+            var panel_folding_btn = document.getElementById("panel_folding_btn");
+            
+            // 패널 헤더 (변수명 : panel_header)
+            var panel_header = document.getElementById("panel_header");
+            
+            // 패널 헤더내 내용물 정렬 설정 (ex. 버튼(접기 버튼) 등)  : 우측 정렬
+            panel_header.style.textAlign = "right"; 
+            
+            // 패널 펼치기 버튼(panel_spreading_btn)을 클릭시 이벤트 핸들러
+            panel_spreading_btn.onclick = function(e) {
+                
+                // 패널 상태 점검(펼침/접기)
+                // 접힘(folded) 상태일 때만 너비가 "300px"로 변경되도록 설정.
+                // 부가적으로 패널 상태 변수는 펼침(spread)로 재설정 조치.
+                // : 이렇게 해야 제대로 슬라이드 패널 기능(토글 기능)이 활성화됨.
+                // 트랜지션 변경이 이미 위에서 설정되어 있으므로 
+                // 자연스럽게 슬라이드 트랜지션(변형) 효과(천천히 펼쳐지는 효과) 발생함.
+                if (panel_status == "folded") {
+                    panel.style.width = "300px";	
+                    panel_status = "spread";
+                } //
+                
+            }; //
+            
+            // 패널 접기 버튼(panel_folding_btn)을 클릭시 이벤트 핸들러
+            // 위와 동일한 요령으로 이벤트 처리 : 위와 구문을 반대로 설정함.
+            panel_folding_btn.onclick = function(e) {
+                
+                // 패널 상태 점검(펼침/접기)
+                if (panel_status == "spread") {
+                    panel.style.width = "0";	
+                    panel_status = "folded";
+                } //
+                
+            }; //
+            
+        };
+        </script>
+        </head>
+        <body>
+        
+            <!-- 패널 펼치기 버튼 -->
+            <button id="panel_spreading_btn">▶</button>
+            
+            <!-- 패널 -->
+            <div id="panel">
+                <div id="panel_header">
+                    <button id="panel_folding_btn">X</button>
+                </div>
+                <div id="panel_content">
+                </div>
+            </div>
+        
+        </body>
+        </html>

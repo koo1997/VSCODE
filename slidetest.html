@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = function(){
+        var a_s = "folded"
+        var a_b= document.getElementById("a_b");
+        var a=document.getElementById("a");
+
+        a.style.width="0";
+        a.style.height="300px  ";
+        a.style.background="black  ";
+        a.style.overflow="hiden";
+        
+        a.style.transitionProperty="width";
+        a.style.transitionDelay="1s";
+        a.style.transitionDuration="0.5s";
+
+        var a_f=document.getElementById("a_f");
+        var a_h=document.getElementById("a_h");
+        a_h.style.textAlign="right";
+
+        a_b.onclick=function(e){
+            if(a_s=="folded"){
+                a.style.width="300px";
+                a_s="spread";
+            }
+        a_f.onclick=funtion(e){
+            if(a_f=="spread")    a.style.width="0";
+                a_s="folded";
+            }
+        }
+    }
+</script>
+<body>
+    <button id="a_s">▶</button>
+    <div id = "a">
+        <div id="a_h">
+            <button id="a_f">X</button>
+        </div>
+    </div>
+    
+</body>
+</html>
